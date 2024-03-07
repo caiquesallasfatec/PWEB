@@ -1,0 +1,113 @@
+body {
+    font-family: "Frutiger", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 50x;
+    padding: 20px;
+    display: flex;
+    flex-wrap: row;
+    justify-content: space-between;
+}
+
+.article {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+.article:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    pointer-events: none;
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+}
+
+.article-content {
+    padding: 15px;
+}
+
+.article-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.article-description {
+    font-size: 14px;
+}
+
+.margin {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.slide-text {
+    display: inline-block; /* Para ocupar apenas o espaço necessário */
+    white-space: nowrap; /* Evita quebras de linha */
+    opacity: 0; /* Começa invisível */
+    transform: translateX(100%); /* Começa fora da tela no lado direito */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.center {
+    text-align: center; /* Centraliza o conteúdo */
+    margin-top: 50vh; /* Coloca o conteúdo no meio verticalmente */
+}
