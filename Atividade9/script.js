@@ -48,6 +48,7 @@ function gerarRelatorio()
      console.log(" Percentual de votos Bons:...............", percentegeGoodOpnions); 
      console.log(" Quantidade de homens que responderam:...", countMen); 
      console.log(" Quantidade de mulheres que responderam:.", countWoman); 
+     
 
 }
 
