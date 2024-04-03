@@ -1,105 +1,78 @@
-const COMPUTER = "machine-point";
-const USER = "user-point";
+var ages = [];
+var genders = [];
+var opnions = []
 
-const CARDS = [
-    "paper",
-    "rock",
-    "sisor"
-]
 
-function paper() {
-    game(0)
-
-}
-
-function rock() {
-    game(1)
-
-}
-
-function sisor() {
-    game(2)
-
-}
-
-function game(user) {
-    var computer = generateAnswer();
-    console.log(computer);
-    displayImage(CARDS[computer]);
-    getWinner(user, computer);
-}
-
-function generateAnswer()
+function responder()
 {
-    return Math.floor(Math.random() * 3);
-}
+    event.preventDefault();
 
-function getWinner(user, computer)
-{
-    document.getElementById("result").innerHTML = "Resultado: Empate"
-
-    if (user == computer) {
-        return;
-    }
-
-    if (user == 0) {
-        if (computer == 0) {
-            return;
-        }
-
-        if (computer == 1) {
-            addPoint(USER);
-        }
-        
-        addPoint(COMPUTER);
-        return;
-    }
-
-    if (user == 1) {
-        if (computer == 0) {
-            addPoint(COMPUTER);
-            return;
-        }
-
-        if (computer == 1) {
-            return;
-        }
-        
-        addPoint(USER);
-        return;
-    }
-
-    if (computer == 0) {
-        addPoint(USER);
-        return;
-    }
-
-    if (computer == 1) {
-        addPoint(COMPUTER);
-        return;
-    }
+    var age    = parseInt(document.getElementById("age").value);
+    var gender = parseInt(document.querySelector('input[name="gender"]:checked').value);
+    var opnion = parseInt(document.querySelector('input[name="opnion"]:checked').value);  
     
-    return;
+    
+    ages.push(age);
+    genders.push(gender);
+    opnions.push(opnion);
+
+    console.log(ages, genders, opnions);
+
+    document.getElementById("formulario").reset();
+
 }
 
-function addPoint(type) {
-    var value = parseInt(document.getElementById(type).innerHTML);
+function gerarRelatorio()
+{
+    var ageMedia   = calculateMedia(ages);
+    var olderAge   =   Math.max.apply(Math, ages);
+    var youngerAge =   Math.min.apply(Math, ages);
 
-    value++;
+    var countWorstOpnions   = countValue(opnions, 1);
+    var countGoodOpnions    = countValue(opnions, 3);
+    var countGreatOpnions   = countValue(opnions, 4);
+    var totalOpnions        = opnions.length;
 
-    document.getElementById(type).innerHTML = value;
+    var percentegeGreatOpnions = calculatePercentage(totalOpnions, countGreatOpnions);
+    var percentegeGoodOpnions  = calculatePercentage(totalOpnions, countGoodOpnions);
 
-    if (type == "user-point") {
-        document.getElementById("result").innerHTML = "Resultado: Venceu"
-        return
+    var countMen = countValue(genders, 1);
+    var countWoman = countValue(genders, 2);
+
+    
+     console.log(" Média de idades:........................", ageMedia); 
+     console.log(" Pessoa mais velha:......................", olderAge); 
+     console.log(" Pessoa mais nova:.......................", youngerAge); 
+     console.log(" Quantidade de votos péssimos:...........", countWorstOpnions);  
+     console.log(" Percentual de votos ótimos:.............", percentegeGreatOpnions); 
+     console.log(" Percentual de votos Bons:...............", percentegeGoodOpnions); 
+     console.log(" Quantidade de homens que responderam:...", countMen); 
+     console.log(" Quantidade de mulheres que responderam:.", countWoman); 
+     
+
+}
+
+function calculateMedia(arr) 
+{
+    if (arr.length == 0) {
+        return 0;
     }
 
-    document.getElementById("result").innerHTML = "Resultado: Perdeu"
+    return arr.reduce((a, b) => {
+        return parseInt(a) + parseInt(b);
+    }, 0) / arr.length;
 }
 
-function displayImage(card)
+function calculatePercentage(total, value)
 {
-    var image = document.getElementById("answer");
+    if (total == 0) {
+        return 0;
+    }
 
-    image.src = "assets/" + card + ".png"
+    return value * 100 / total;
+}
+
+function countValue(arr, value)
+{
+    return arr.filter(x => x==value).length
 }

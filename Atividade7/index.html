@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+
+    <title>Jokenpo</title>
+</head>
+
+<body>
+
+    <container class="flex-container">
+        <header>
+            <h1 class="flex-items">Jokenpo</h1>
+            <p style="text-align: center;">
+                Placar
+            </p>
+            <p id="result">
+                Resultado: 
+            </p>
+
+            <p style="text-align: center;">Máquina: <span id="machine-point">0</span> x Você: <span id="user-point">0</span></p>
+        </header>
+
+        <section class="flex-options">
+            <img onclick="paper()" class="cards" src="assets/paper.png"> </img>
+            <img onclick="rock()" class="cards" src="assets/rock.png"> </img>
+            <img onclick="sisor()" class="cards" src="assets/sisor.png"> </img>            
+        </section>
+
+        <section>
+            <h1>Computador: </h1>
+            <img id="answer" class="cards"></img>
+        </section>
+    </container>
+</body>
+
+</html>
